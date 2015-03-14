@@ -4,7 +4,7 @@ function Socket (url, port){
     //on open on the connection
     this.connection.onopen = function(){
         //key value pair [funtion name ] => Arguments
-        var init {
+        var init = {
             'startgame' : true
         };
         this.connection.Send(init);
@@ -12,7 +12,7 @@ function Socket (url, port){
     // closes the connection
     this.connection.onclose = function(){
 
-    }
+    };
     //received a message from the server
     this.connection.onmessage = function(e){
         //call another function which shows the information
