@@ -1,5 +1,6 @@
 function Socket (url, port){
     this.connection = new WebSocket("ws://" + url, "echo-protocol");
+    var that = this;
 
     //on open on the connection
     this.connection.onopen = function(){
@@ -7,8 +8,8 @@ function Socket (url, port){
         var init = {
             'startgame' : true
         };
-        this.send(init);
-
+        this.send(JSON.stringify(init));
+        game = new Game();
     };
     // closes the connection
     this.connection.onclose = function(){
@@ -19,10 +20,34 @@ function Socket (url, port){
         //call another function which shows the information
         //showCards(e.data);
 
-	console.log(e.data);
+	    console.log(e.data);
     };
 }
 //sends the
-Socket.prototype.send = function (message){
-    this.connection.Send(JSON.stringify(message));
+//Socket.prototype.send = function (message){
+//    this.connection.Send(JSON.stringify(message));
+//}
+//get cards
+Socket.prototype.getCards = function(){
+    var cards = {
+        'function' : 'getcards'
+    };
+    this.connection.send(JSON.stringify(cards));
+}
+//submit answer
+Socket.prototype.submitAnswer = function(tick, cap){
+    var answer = {
+        'function' : 'answer',
+        'score' : cap,
+        'answer' : tick
+    };
+    this.connection.send(JSON.stringify(answer));
+}
+//create player
+Socket.prototype.createPlayer = function(url){
+    var player = {
+        'function' : 'createplayer',
+        'createplayer' : url
+    };
+    this.connection.send(JSON.stringify(player));
 }

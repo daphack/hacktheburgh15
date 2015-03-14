@@ -5,10 +5,9 @@
 
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
         <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="./js/game.js"></script>
         <script type="text/javascript" src="./js/events.js"></script>
         <script type="text/javascript" src="./js/client.js"></script>
-
+        <script type="text/javascript" src="./js/game.js"></script>
     </head>
     <body>
         <section class="page home">
@@ -148,11 +147,12 @@
             <img src="./images/loading.gif" height="55px" width="54px"/>
         </section>
         <script type="text/javascript">
-            var game = new Game();
-            game.showCards();
+        var game;
             $(document).ready(function() {
                 $('.page').hide();
                 $('.page.home').show();
+
+
             });
 
             $('.cards-card').click(function() {
@@ -163,8 +163,8 @@
             });
 
             $('.play-button-choose').click(chooseCard);
-            $('.home-button-play').click(createWebsocket);
 
+            $('.home-button-play').click(createWebsocket);
         </script>
     </body>
 </html>
