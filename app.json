@@ -1,0 +1,6 @@
+{
+  "name": "Stock Trumps",
+  "description": "A top trumps server using live stock-market data.",
+  "repository": "https://github.com/daphack/hacktheburgh15",
+  "keywords": ["trumps", "stock", "market"]
+}
