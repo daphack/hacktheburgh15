@@ -1,5 +1,5 @@
 function Socket (url, port){
-    this.connection = new WebSocket("ws://" + url + ":" + port);
+    this.connection = new WebSocket("ws://" + url + ":" + port + "/test");
 
     //on open on the connection
     this.connection.onopen = function(){
