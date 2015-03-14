@@ -29,15 +29,15 @@ wsServer.on('request', function(request) {
                     if(data.function === "getcards") {
 
                         var cardObj = {
-                            'function' : 'getcards',
-                            'cards': bb.getcards()
-                        };
+                            function : 'getcards',
+                            cards: bb.getcards()
+                    };
                         connection.send(JSON.stringify(cardObj));
                     } else if(data.function === "startgame") {
 
                         var game = {
-                            'function' : 'startgame',
-                            'url' : 'lpdrog315'
+                            function : 'startgame',
+                            url : 'lpdrog315'
                         };
                         connection.send(JSON.stringify(game));
                     }
