@@ -1,5 +1,5 @@
 {
-  "name": "node-js-getting-started",
+  "name": "stock-trumps",
   "version": "0.0.1",
   "description": "A top trumps server using live stock-market data",
   "main": "index.js",
