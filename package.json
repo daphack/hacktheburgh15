@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "websocket": "~"
+  },
   "engines": {
     "node": "0.10.x"
   },
