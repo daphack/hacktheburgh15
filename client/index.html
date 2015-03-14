@@ -4,9 +4,11 @@
         <title>Stock Trumps by Daphack</title>
 
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-        <script type="text/javascript" src="./js/game.js"></script>
         <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./js/game.js"></script>
         <script type="text/javascript" src="./js/events.js"></script>
+        <script type="text/javascript" src="./js/client.js"></script>
+
     </head>
     <body>
         <section class="page home">
@@ -15,6 +17,9 @@
         </section>
 
         <section class="page share">
+            <span class="share-message">Waiting for players...</span>
+            <img src="./images/loading.gif" width="54px" height="55px" />
+            <span><span class="share-count">1</span> out of 5 players found</span>
             <h2 class="page-heading share-heading">Share This Url...</h2>
             <input class="share-url" type="text" id="share-url" readonly value="http://pythonanywhere.com/daphack/xrjy76j" />
             <button class="button share-button-go" onclick="$('.share').hide(); $('.play').show();"><span>Go!</span></button>
