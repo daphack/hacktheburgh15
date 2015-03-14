@@ -19,10 +19,34 @@ function Socket (url, port){
         //call another function which shows the information
         //showCards(e.data);
 
-	console.log(e.data);
+	    console.log(e.data);
     };
 }
 //sends the
-Socket.prototype.send = function (message){
-    this.connection.Send(JSON.stringify(message));
+//Socket.prototype.send = function (message){
+//    this.connection.Send(JSON.stringify(message));
+//}
+//get cards
+Socket.prototype.getCards = function(){
+    var cards = {
+        'function' : 'getcards'
+    };
+    this.connection.Send(cards);
+}
+//submit answer
+Socket.prototype.submitAnswer = function(tick, cap){
+    var answer = {
+        'function' : 'answer',
+        'score' : cap,
+        'answer' : tick
+    };
+    this.connection.Send(answer);
+}
+//create player
+Socket.prototype.createPlayer = function(url){
+    var player = {
+        'function' : 'createplayer',
+        'createplayer' : url
+    };
+    this.connection.Send(player);
 }
