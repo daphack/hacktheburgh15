@@ -43,6 +43,7 @@ data = [
 
 @asyncio.coroutine
 def hello(websocket, path):
+    yield from websocket.recv()
     payload = json.dumps(data)
     yield from websocket.send(payload)
 
