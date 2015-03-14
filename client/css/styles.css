@@ -76,6 +76,10 @@ html, body {
     padding: 10px;
 }
 
+.home-button-play {
+    width: 100px;
+    height: 45px;
+}
 /* ========================= *
  * Share Page
  * ========================= */
