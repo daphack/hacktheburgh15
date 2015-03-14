@@ -1,4 +1,5 @@
 bin/
+certs/
 include/
 lib/
 .Python
