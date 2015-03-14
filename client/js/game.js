@@ -7,8 +7,9 @@ function Game(){
 * Updates the card div every with all the data which is passed in
 * @param JSON object from the server of the card.
 */
-Game.prototype.showCards = function(){
+Game.prototype.showCards = function(data){
     //TODO test data
+    /*
     var data = [
             {
               "tick" : "AP",
@@ -46,6 +47,10 @@ Game.prototype.showCards = function(){
                 "change" : 20
             }
     ];
+
+    */
+    data = JSON.parse(data);
+    console.log(data);
     //loops through the cards and ouputs the information to the screen
     //parses the json object passed in.
     $('.cards-card').each(function(i) {
