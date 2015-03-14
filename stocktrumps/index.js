@@ -1,5 +1,6 @@
 var WebSocketServer = require('websocket').server;
 var http = require('http');
+var bb = require('./bloomberg.js'); //Bloomberg api
 
 var port = process.env.PORT || 8080;
 var server = http.createServer(function(request, response) {
@@ -18,14 +19,16 @@ var wsServer = new WebSocketServer({
 wsServer.on('request', function(request) {
     var connection = request.accept('echo-protocol', request.origin);
     console.log("Request received");
-
     connection.send("Handshake made");
     connection.on('message',function(message) {
         if(message.type === 'utf8') {
-            connection.sendUTF("Message Receieved");
+            var data = JSON.parse(message.utf8Data);
 
-        } else {
-            connection.sendUTF("Message Received in different format");
+            if(data.function !== undefined) {
+                if(data.function === "getcards") {
+                    connection.send(JSON.stringify(bb.getcards()));
+                }
+            }
         }
     });
 });
