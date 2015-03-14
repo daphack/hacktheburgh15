@@ -1,0 +1,6 @@
+Contributors
+============
+
+@ryangouldsmith
+@daleoo
+@charlienewey
