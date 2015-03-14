@@ -20,6 +20,7 @@ wsServer.on('request', function(request) {
     connection.on('message',function(message) {
         if(message.type === 'utf8') {
             connection.sendUTF("Message Receieved");
+            
         } else {
             connection.sendUTF("Message Received in different format");
         }

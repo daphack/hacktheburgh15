@@ -1,6 +1,3 @@
-bin/
 certs/
-include/
-lib/
-.Python
+node_modules/
 .DS_Store
