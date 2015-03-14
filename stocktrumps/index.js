@@ -19,7 +19,7 @@ var wsServer = new WebSocketServer({
 wsServer.on('request', function(request) {
     var connection = request.accept('echo-protocol', request.origin);
     console.log("Request received");
-    connection.send("Handshake made");
+    connection.send(JSON.stringify({ message: "Message Received" }));
     connection.on('message',function(message) {
         if(message.type === 'utf8') {
             try {
@@ -30,7 +30,7 @@ wsServer.on('request', function(request) {
 
                         var cardObj = {
                             function : 'getcards',
-                            
+
                         };
                         connection.send(JSON.stringify(cardObj));
                     } else if(data.function === "startgame") {
