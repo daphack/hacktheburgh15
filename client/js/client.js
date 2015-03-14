@@ -1,5 +1,5 @@
 function Socket (url, port){
-    this.connection = new WebSocket("ws://" + url + ":" + port);
+    this.connection = new WebSocket("ws://" + url + ":" + port, "echo-protocol");
 
     //on open on the connection
     this.connection.onopen = function(){
@@ -23,4 +23,3 @@ function Socket (url, port){
 Socket.prototype.send = function (message){
     this.connection.Send(JSON.stringify(message));
 }
-var socket = new Socket("","");
