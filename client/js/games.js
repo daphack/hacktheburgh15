@@ -10,7 +10,7 @@ Game.prototype.showCards = function(){
     //TODO test data
     var data = [
             {
-              "tick" : "APP",
+              "tick" : "AP",
               "name" : "apple",
               "cap" : "1",
               "price" : 300,
@@ -31,14 +31,14 @@ Game.prototype.showCards = function(){
                 "change" : 20
             },
             {
-                "tick" : "mm",
+                "tick" : "m",
                 "name" : "amm",
                 "cap" : "1",
                 "price" : 300,
                 "change" : 20
             },
             {
-                "tick" : "dd",
+                "tick" : "d",
                 "name" : "dd",
                 "cap" : "1",
                 "price" : 300,
