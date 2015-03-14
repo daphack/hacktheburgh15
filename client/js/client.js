@@ -19,3 +19,4 @@ function Socket (url, port){
 Socket.prototype.send = function (message){
     this.connection.Send(JSON.stringify(message));
 }
+var socket = new Socket("","");
