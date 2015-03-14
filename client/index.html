@@ -4,23 +4,26 @@
         <title>Stock Trumps by Daphack</title>
 
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+        <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./js/events.js"></script>
     </head>
     <body>
         <section class="page home">
             <h1 class="page-heading home-heading">Stock Trumps</h1>
-            <button class="button home-button-play"><span>Play</span></button>
+            <button class="button home-button-play" onclick="$('.share').show(); $('.home').hide();"><span>Play</span></button>
         </section>
 
         <section class="page share">
             <h2 class="page-heading share-heading">Share This Url...</h2>
             <input class="share-url" type="text" id="share-url" readonly value="http://pythonanywhere.com/daphack/xrjy76j" />
-            <button class="button share-button-go"><span>Go!</span></button>
+            <button class="button share-button-go" onclick="$('.share').hide(); $('.play').show();"><span>Go!</span></button>
         </section>
 
         <section class="page play">
             <h2 class="page-heading play-heading">Highest Market Capitalisation</h2>
             <div class="cards">
-                <div class="cards-card">
+                <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
                         Apple Corp. <span class="tick">AAPL</span>
                     </div>
@@ -42,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="cards-card">
+                <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
                         Apple Corp. <span class="tick">AAPL</span>
                     </div>
@@ -64,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="cards-card">
+                <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
                         Apple Corp. <span class="tick">AAPL</span>
                     </div>
@@ -86,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="cards-card">
+                <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
                         Apple Corp. <span class="tick">AAPL</span>
                     </div>
@@ -108,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="cards-card">
+                <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
                         Apple Corp. <span class="tick">AAPL</span>
                     </div>
@@ -131,8 +134,24 @@
                     </div>
                 </div>
             </div>
-        <section>
 
+            <button class="button play-button-choose"><span>Choose Card!</span></button>
         </section>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.page').hide();
+                $('.page.home').show();
+            });
+
+            $('.cards-card').click(function() {
+                $('.cards-card.selected').removeClass('selected');
+                $(this).addClass('selected');
+
+                $('.play-button-choose').show();
+            });
+
+            $('.play-button-choose').click(chooseCard);
+        </script>
     </body>
 </html>

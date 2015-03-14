@@ -141,3 +141,9 @@ html, body {
     width: 60%;
     display: inline-block;
 }
+
+.play-button-choose {
+    display: none;
+    width: 180px;
+    height: 40px;
+}
