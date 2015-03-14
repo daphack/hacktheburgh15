@@ -33,16 +33,14 @@ wsServer.on('request', function(request) {
                             'cards': bb.getcards()
                         };
                         connection.send(JSON.stringify(cardObj));
-                    }
-                } else if('startgame' in data) {
-                    //TODO: Start a new game
+                    } else if(data.function === "startgame") {
 
-                    connection.send(
-                        JSON.stringify({
+                        var game = {
                             'function' : 'startgame',
-                            'url': 'lpdrog315'
-                        })
-                    );
+                            'url' : 'lpdrog315'
+                        };
+                        connection.send(JSON.stringify(game));
+                    }
                 }
             } catch(e) {
                 console.log(e);
