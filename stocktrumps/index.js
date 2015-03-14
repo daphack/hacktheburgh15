@@ -20,7 +20,6 @@ wsServer.on('request', function(request) {
 
     connection.send("Handshake made");
     connection.on('message',function(message) {
-        conn
         if(message.type === 'utf8') {
             connection.sendUTF("Message Receieved");
 
