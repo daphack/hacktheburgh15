@@ -1,5 +1,6 @@
 function Socket (url, port){
     this.connection = new WebSocket("ws://" + url, "echo-protocol");
+    var that = this;
 
     //on open on the connection
     this.connection.onopen = function(){
@@ -8,11 +9,7 @@ function Socket (url, port){
             'startgame' : true
         };
         this.send(JSON.stringify(init));
-        var cards = {
-            'function' : 'getcards'
-        };
-        this.send(JSON.stringify(cards));
-
+        game = new Game();
     };
     // closes the connection
     this.connection.onclose = function(){
