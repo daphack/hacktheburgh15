@@ -10,8 +10,8 @@
     </head>
     <body>
         <section class="page home">
-            <h1 class="page-heading home-heading">Stock Trumps</h1>
-            <button class="button home-button-play" onclick="$('.share').show(); $('.home').hide();"><span>Play</span></button>
+                <h1 class="page-heading home-heading">Stock Trumps</h1>
+                <button class="button home-button-play" onclick="$('.share').show(); $('.home').hide();"><span>Play</span></button>
         </section>
 
         <section class="page share">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
-                        Apple Corp. <span class="tick">AAPL</span>
+                        <span class="name">Apple Corp.</span><span class="tick">AAPL</span>
                     </div>
                     <img class="cards-card-image" src="http://www.bloomberg.com/image/ifiqYe8QHJwo.jpg" />
                     <div class="cards-card-data">
@@ -142,6 +142,11 @@
             <button class="button play-button-choose"><span>Choose Card!</span></button>
         </section>
 
+
+        <section class="page loading">
+            <h2 class="page-heading loading-heading">Waiting For Everyone</h2>
+            <img src="./images/loading.gif" height="55px" width="54px"/>
+        </section>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.page').hide();
