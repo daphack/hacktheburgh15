@@ -6,7 +6,7 @@ var server = http.createServer(function(request, response) {
     response.end();
 });
 
-server.listen(5678, function() {});
+server.listen(80, function() {});
 
 var wsServer = new WebSocketServer({
     httpServer: server,
