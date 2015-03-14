@@ -50,22 +50,94 @@ html, body {
 }
 
 /* ========================= *
- * Play Page
+ * Share Page
  * ========================= */
-.play {
+.share {
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.play-heading {
+.share-heading {
     color: white;
     width: 90%;
     font-size: 3em;
 }
-.play-url {
+.share-url {
     height: 20%;
     width: 90%;
     font-size: 2.5rem;
     margin: 10px 0;
+}
+
+/* ======================== *
+ * Play Page
+ * ======================== */
+.play {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.play-heading {
+    font-size: 4rem;
+    width: 100%;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    border: 1px solid white;
+    width: 90%;
+    border-radius: 10px;
+}
+.cards {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cards-card {
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    width: 19%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cards-card-title {
+    height: 13%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    font-size: 1.3em;
+    padding-top: 10px;
+}
+
+.cards-card-title .tick {
+    font-size: 1rem;
+    vertical-align: top;
+}
+.cards-card-image {
+    height: 46%;
+    max-width: 100%;
+}
+
+.cards-card-data-group {
+    margin: 5px;
+}
+.cards-card-data-group .label {
+    width: 30%;
+    display: inline-block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.cards-card-data-group .data {
+    width: 60%;
+    display: inline-block;
 }
