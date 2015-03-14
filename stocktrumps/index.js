@@ -22,12 +22,16 @@ wsServer.on('request', function(request) {
     connection.send("Handshake made");
     connection.on('message',function(message) {
         if(message.type === 'utf8') {
-            var data = JSON.parse(message.utf8Data);
+            try {
+                var data = JSON.parse(message.utf8Data);
 
-            if(data.function !== undefined) {
-                if(data.function === "getcards") {
-                    connection.send(JSON.stringify(bb.getcards()));
+                if(data.function !== undefined) {
+                    if(data.function === "getcards") {
+                        connection.send(JSON.stringify(bb.getcards()));
+                    }
                 }
+            } catch(e) {
+                console.log(e);
             }
         }
     });
