@@ -7,7 +7,11 @@ function Socket (url, port){
         var init = {
             'startgame' : true
         };
-        this.send(init);
+        this.send(JSON.stringify(init));
+        var cards = {
+            'function' : 'getcards'
+        };
+        this.send(JSON.stringify(cards));
 
     };
     // closes the connection
@@ -31,7 +35,7 @@ Socket.prototype.getCards = function(){
     var cards = {
         'function' : 'getcards'
     };
-    this.connection.Send(cards);
+    this.connection.send(JSON.stringify(cards));
 }
 //submit answer
 Socket.prototype.submitAnswer = function(tick, cap){
@@ -40,7 +44,7 @@ Socket.prototype.submitAnswer = function(tick, cap){
         'score' : cap,
         'answer' : tick
     };
-    this.connection.Send(answer);
+    this.connection.send(JSON.stringify(answer));
 }
 //create player
 Socket.prototype.createPlayer = function(url){
@@ -48,5 +52,5 @@ Socket.prototype.createPlayer = function(url){
         'function' : 'createplayer',
         'createplayer' : url
     };
-    this.connection.Send(player);
+    this.connection.send(JSON.stringify(player));
 }

@@ -1,3 +1,4 @@
+var socket
 /** Game events */
 function chooseCard() {
     var $card = $('.cards-card.selected');
@@ -12,7 +13,8 @@ function chooseCard() {
 
 //TODO: Open websocket
 function createWebsocket(){
-    var socket = new Socket("stocktrumps.herokuapp.com:80");
+    socket = new Socket("stocktrumps.herokuapp.com:80");
+    //socket.getCards();
 }
 
 //TODO: Create session/connect to existing session

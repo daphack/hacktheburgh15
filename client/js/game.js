@@ -58,6 +58,9 @@ Game.prototype.showCards = function(){
 
     });
 }
+Game.prototype.getCards = function(){
+    //socket.getCards();
+};
 /**
 * Get the image based on the name from the JSON result
 * Uses jQuery to Change the src attribute to the image.
