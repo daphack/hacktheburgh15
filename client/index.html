@@ -4,7 +4,7 @@
         <title>Stock Trumps by Daphack</title>
 
         <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-        <script type="text/javascript" src="./js/games.js"></script>
+        <script type="text/javascript" src="./js/game.js"></script>
         <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="./js/events.js"></script>
     </head>
@@ -25,7 +25,7 @@
             <div class="cards">
                 <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
-                        Apple Corp. <span class="tick">AAPL</span>
+                        <span class="name">Apple Corp.</span><span class="tick">AAPL</span>
                     </div>
                     <img class="cards-card-image" src="http://www.bloomberg.com/image/ifiqYe8QHJwo.jpg" />
                     <div class="cards-card-data">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
-                        Apple Corp. <span class="tick">AAPL</span>
+                        <span class="name">Apple Corp.</span> <span class="tick">AAPL</span>
                     </div>
                     <img class="cards-card-image" src="http://www.bloomberg.com/image/ifiqYe8QHJwo.jpg" />
                     <div class="cards-card-data">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
-                        Apple Corp. <span class="tick">AAPL</span>
+                        <span class="name">Apple Corp.</span> <span class="tick">AAPL</span>
                     </div>
                     <img class="cards-card-image" src="http://www.bloomberg.com/image/ifiqYe8QHJwo.jpg" />
                     <div class="cards-card-data">
@@ -113,7 +113,7 @@
                 </div>
                 <div class="cards-card" data-tick="AAPL">
                     <div class="cards-card-title">
-                        Apple Corp. <span class="tick">AAPL</span>
+                        <span class="name">Apple Corp.</span> <span class="tick">AAPL</span>
                     </div>
                     <img class="cards-card-image" src="http://www.bloomberg.com/image/ifiqYe8QHJwo.jpg" />
                     <div class="cards-card-data">
@@ -134,11 +134,6 @@
                     </div>
                 </div>
             </div>
-            <script>
-                var g = new Game();
-                g.showCards();
-            </script>
-
             <button class="button play-button-choose"><span>Choose Card!</span></button>
         </section>
 
@@ -148,6 +143,8 @@
             <img src="./images/loading.gif" height="55px" width="54px"/>
         </section>
         <script type="text/javascript">
+            var game = new Game();
+            game.showCards();
             $(document).ready(function() {
                 $('.page').hide();
                 $('.page.home').show();

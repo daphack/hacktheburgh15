@@ -50,6 +50,7 @@ Game.prototype.showCards = function(){
     $('.cards-card').each(function(i) {
         $(this).find(".cards-card-title .name").text(data[i].name);
         $(this).find(".cards-card-title .tick").text(data[i].tick);
+        $(this).data("tick", data[i].tick);
         $(this).find(".cards-card-data-group #cap").text(data[i].cap);
         $(this).find(".cards-card-data-group #price").text(data[i].price);
         $(this).find(".cards-card-data-group #change").text(data[i].change);
