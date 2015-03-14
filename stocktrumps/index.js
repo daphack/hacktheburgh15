@@ -25,10 +25,24 @@ wsServer.on('request', function(request) {
             try {
                 var data = JSON.parse(message.utf8Data);
 
-                if(data.function !== undefined) {
+                if('function' in data && data.function !== undefined) {
                     if(data.function === "getcards") {
-                        connection.send(JSON.stringify(bb.getcards()));
+
+                        var cardObj = {
+                            'function' : 'getcards',
+                            'cards': bb.getcards()
+                        };
+                        connection.send(JSON.stringify(cardObj));
                     }
+                } else if('startgame' in data) {
+                    //TODO: Start a new game
+
+                    connection.send(
+                        JSON.stringify({
+                            'function' : 'startgame',
+                            'url': 'lpdrog315'
+                        })
+                    );
                 }
             } catch(e) {
                 console.log(e);
