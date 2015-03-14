@@ -1,0 +1,3 @@
+requests
+simplejson
+http://static.bloomberglabs.com/api/python/blpapi_python_3.5.5.tar.gz
