@@ -12,7 +12,7 @@ function chooseCard() {
 
 //TODO: Open websocket
 function createWebsocket(){
-    var socket = new Socket("localhost", "5678");
+    var socket = new Socket("http://stocktrumps.herokuapp.com", "5678");
 }
 //TODO: Create session/connect to existing session
 //TODO: Accept new users to session
