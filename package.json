@@ -1,25 +1,25 @@
 {
-  "name": "stock-trumps",
-  "version": "0.0.1",
-  "description": "A top trumps server using live stock-market data",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "websocket": "~"
-  },
-  "engines": {
-    "node": "0.10.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/daphack/hacktheburgh15"
-  },
-  "keywords": [
-      "trumps",
-      "stock",
-      "market"
-  ],
-  "license": "MIT"
+    "name": "stock-trumps",
+    "version": "0.0.1",
+    "description": "A top trumps server using live stock-market data",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "websocket": "latest"
+    },
+    "engines": {
+        "node": "0.10.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/daphack/hacktheburgh15"
+    },
+    "keywords": [
+        "trumps",
+        "stock",
+        "market"
+    ],
+    "license": "MIT"
 }
