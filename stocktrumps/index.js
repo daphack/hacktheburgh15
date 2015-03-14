@@ -39,7 +39,7 @@ wsServer.on('request', function(request) {
                         var game = {
                             function : 'startgame',
                             url : 'lpdrog315'
-                        };
+                        }
                         connection.send(JSON.stringify(game));
                     }
                 }
