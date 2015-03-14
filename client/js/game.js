@@ -8,49 +8,6 @@ function Game(){
 * @param JSON object from the server of the card.
 */
 Game.prototype.showCards = function(data){
-    //TODO test data
-    /*
-    var data = [
-            {
-              "tick" : "AP",
-              "name" : "Apple",
-              "cap" : "1",
-              "price" : 300,
-              "change" : 20
-            },
-            {
-                "tick" : "A",
-                "name" : "Google",
-                "cap" : "1",
-                "price" : 300,
-                "change" : 20
-            },
-            {
-                "tick" : "p",
-                "name" : "Bloomberg",
-                "cap" : "1",
-                "price" : 300,
-                "change" : 20
-            },
-            {
-                "tick" : "m",
-                "name" : "Twitter",
-                "cap" : "1",
-                "price" : 300,
-                "change" : 20
-            },
-            {
-                "tick" : "d",
-                "name" : "Facebook",
-                "cap" : "1",
-                "price" : 300,
-                "change" : 20
-            }
-    ];
-
-    */
-    data = JSON.parse(data);
-    console.log(data);
     //loops through the cards and ouputs the information to the screen
     //parses the json object passed in.
     $('.cards-card').each(function(i) {
