@@ -1,5 +1,5 @@
 function Socket (url, port){
-    this.connection = new WebSocket("ws://" + url + ":" + port, "echo-protocol");
+    this.connection = new WebSocket("ws://" + url, "echo-protocol");
 
     //on open on the connection
     this.connection.onopen = function(){
@@ -7,7 +7,8 @@ function Socket (url, port){
         var init = {
             'startgame' : true
         };
-        this.connection.Send(init);
+        this.send(init);
+
     };
     // closes the connection
     this.connection.onclose = function(){
@@ -16,7 +17,9 @@ function Socket (url, port){
     //received a message from the server
     this.connection.onmessage = function(e){
         //call another function which shows the information
-        showCards(e.data);
+        //showCards(e.data);
+
+	console.log(e.data);
     };
 }
 //sends the
