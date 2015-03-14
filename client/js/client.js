@@ -3,7 +3,11 @@ function Socket (url, port){
 
     //on open on the connection
     this.connection.onopen = function(){
-
+        //key value pair [funtion name ] => Arguments
+        var init {
+            'startgame' : true
+        };
+        this.connection.Send(init);
     };
     // closes the connection
     this.connection.onclose = function(){
