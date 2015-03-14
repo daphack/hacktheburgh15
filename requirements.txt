@@ -1,4 +1,0 @@
-Cython==0.22
-aiohttp==0.14.4
-simplejson==3.6.5
-websockets==2.4
