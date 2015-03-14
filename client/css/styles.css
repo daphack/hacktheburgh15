@@ -143,6 +143,8 @@ html, body {
 .cards-card.selected {
     height: 100%;
     width: 20%;
+    border-color: #FF8C00;
+    border-style:solid;
 }
 .cards-card-title {
     height: 13%;
