@@ -1,1 +1,1 @@
-web: python stocktrumps/websockets.py
+web: node stocktrumps/index.js
