@@ -30,8 +30,8 @@ wsServer.on('request', function(request) {
 
                         var cardObj = {
                             function : 'getcards',
-                            cards: bb.getcards()
-                    };
+                            
+                        };
                         connection.send(JSON.stringify(cardObj));
                     } else if(data.function === "startgame") {
 
