@@ -1,12 +1,13 @@
 var WebSocketServer = require('websocket').server;
 var http = require('http');
 
+var port = process.env.PORT || 8080;
 var server = http.createServer(function(request, response) {
     response.writeHead(404);
     response.end();
 });
 
-server.listen(80, function() {});
+server.listen(port, function() {});
 
 var wsServer = new WebSocketServer({
     httpServer: server,
