@@ -8,3 +8,9 @@ function chooseCard() {
     $('.loading').show();
     console.log($card.data('tick'));
 }
+
+
+//TODO: Open websocket
+//TODO: Create session/connect to existing session
+//TODO: Accept new users to session
+//TODO: Run game
