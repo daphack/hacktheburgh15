@@ -10,8 +10,9 @@ function Socket (url, port){
 
     }
     //received a message from the server
-    this.connection.onmessage = function(){
-
+    this.connection.onmessage = function(e){
+        //call another function which shows the information
+        showCards(e.data);
     };
 }
 //sends the
