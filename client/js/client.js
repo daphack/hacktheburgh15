@@ -19,10 +19,26 @@ function Socket (url, port){
     this.connection.onmessage = function(e){
         //call another function which shows the information
         //showCards(e.data);
-        var data = JSON.parse(e.data);
-        //console.log(e.data);
+        var data;
+        try {
+            data = JSON.parse(e.data);
+            if ("function" in data){
+                if (data.function == "startgame"){
+                    //parse the foo function
+                } else if (data.function === "getcards"){
+                    //show the cards
+                    game.showCards(data.cards);
+                }
+            }
+            console.log(data);
 
-        game.showCards(data);
+        } catch (e){
+            //console.log(e);
+        }
+        //console.log(e.data);
+        console.log(data);
+
+
     };
 }
 //sends the
