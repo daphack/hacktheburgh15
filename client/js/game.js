@@ -51,6 +51,7 @@ Game.prototype.checkIfWinner = function (tick){
     console.log(this.tick);
     if (this.tick === tick){
         console.log("winner");
+
     }
 };
 /**
