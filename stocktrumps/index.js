@@ -151,6 +151,34 @@ wsServer.on('request', function(request) {
                                 games[data.game].isPlaying = true;
                             }
                         }
+                    } else if(data.function === "end") {
+                        if(data.game in games) {
+                            var answers = games[data.game].answer;
+
+                            var winner = "";
+                            var max = 0;
+                            for(var key in answers) {
+                                if(parseFloat(answers[key]) > max) {
+                                    winner = key;
+                                    max = parseFloat(answers[key]);
+                                }
+                            }
+
+                            if(winner) {
+                                var winningObj = {
+                                    function: 'selectwinner',
+                                    wintick: winner
+                                };
+
+                                var connections = games[data.game].connections;
+                                var len = connections.length;
+
+                                for(var x = 0; x < len; x++) {
+                                    var conn = connections[x];
+                                    conn.send(JSON.stringify(winningObj));
+                                }    
+                            }
+                        }
                     }
 
                 }
