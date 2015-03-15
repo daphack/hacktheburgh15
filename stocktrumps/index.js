@@ -35,7 +35,7 @@ wsServer.on('request', function(request) {
                                 function : 'getcards'
                             };
 
-                            var connections = game[data.game].connections;
+                            var connections = games[data.game].connections;
                             var len = connections.length;
                             for(var x = 0; x < len; x++) {
                                 var conn = connections[x];
