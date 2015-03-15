@@ -213,3 +213,7 @@ html, body {
     font-size: 6rem;
     padding: 40px 20px;
 }
+.timer {
+    font-size:3em;
+    color:#FFFFFF;
+}

@@ -27,13 +27,15 @@ function getMetric(){
 }
 
 function initTimer(){
-    var time = 60;
+    var time = 30;
 
     var id = setInterval(function(){
         time--;
-        if (time == 0 && isHost){
-            game.end();
+        if (time == 0){
             clearInterval(id);
+            if (isHost){
+                game.end();
+            }
         }
         $('.page .time').text(time);
     },1000);
