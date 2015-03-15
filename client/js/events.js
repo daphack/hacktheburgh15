@@ -13,10 +13,16 @@ function chooseCard() {
 
 //TODO: Open websocket
 function createWebsocket(){
-    socket = new Socket("localhost:8080");    
+    socket = new Socket("localhost:8080");
     //socket.getCards();
 }
 
+/**
+* Get the metric by calling the socket
+*/
+function getMetric(){
+    socket.selectMetric();
+}
 
 
 

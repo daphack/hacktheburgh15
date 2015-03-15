@@ -36,8 +36,10 @@ Game.prototype.updatePlayers = function(count){
 };
 Game.prototype.setMetric = function (metric){
     this.metric = metric;
+    console.log(metric);
+    $('.share .metric').text(metric);
 };
-/**is
+/**
 * Get the image based on the name from the JSON result
 * Uses jQuery to Change the src attribute to the image.
 * @param name is the name of the card

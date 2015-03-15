@@ -23,10 +23,8 @@ function Socket (url, port){
         try {
             data = JSON.parse(e.data);
             if ("function" in data){
-                console.dir(data);
                 if (data.function === "startgame"){
                     //parse the start game function
-                    console.log(data.url);
                     game.start(data.url);
 
 
@@ -36,13 +34,12 @@ function Socket (url, port){
                 } else if (data.function === 'createplayer'){
                     //send update to every player in the team to let them know how many have joined
                     game.updatePlayers(data.count);
-                } else if (data.function == "selectmetric"){
+                } else if (data.function === "selectmetric"){
                     //when go is clicked
+                    console.log("metric" + data.metric);
                     game.setMetric(data.metric);
                 }
             }
-            console.log(data);
-
         } catch (e){
             //console.log(e);
         }
@@ -68,7 +65,8 @@ Socket.prototype.submitAnswer = function(tick, cap){
     var answer = {
         'function' : 'answer',
         'score' : cap,
-        'answer' : tick
+        'answer' : tick,
+        'game' : game.id
     };
     this.connection.send(JSON.stringify(answer));
 }
@@ -76,7 +74,15 @@ Socket.prototype.submitAnswer = function(tick, cap){
 Socket.prototype.createPlayer = function(url){
     var player = {
         'function' : 'createplayer',
-        'createplayer' : url
+        'createplayer' : url,
+        'game' : game.id
     };
     this.connection.send(JSON.stringify(player));
+}
+Socket.prototype.selectMetric = function(){
+    var metric = {
+        'function' : 'selectmetric',
+        'game' : game.id
+    };
+    this.connection.send(JSON.stringify(metric));
 }
