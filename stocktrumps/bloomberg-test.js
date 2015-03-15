@@ -75,7 +75,7 @@ var options = {
     ca: fs.readFileSync("certs/bloomberg.crt"),
 };
 
-function getTickData() {
+function getTickData(callback) {
     var req = https.request(options, function(res) {
         var buffer = "";
         var ticks = [];
@@ -110,6 +110,8 @@ function getTickData() {
     });
 
     var data = getData(getFiveRandomTickers(tickers));
+
+    callback(data);
     req.write(JSON.stringify(data));
     req.end();
     req.on("error", function(e) {
