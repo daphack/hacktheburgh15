@@ -195,3 +195,21 @@ html, body {
     width: 180px;
     height: 40px;
 }
+
+/* =========================== *
+ * Results
+ * =========================== */
+.result {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-heading {
+    background: rgba(0,0,0,0.9);
+    color: white;
+    font-size: 6rem;
+    padding: 40px 20px;
+}

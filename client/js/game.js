@@ -22,8 +22,7 @@ Game.prototype.showCards = function(data){
         $(this).find(".cards-card-data-group #change").text(data[i].change);
 
     });
-    $('.loading').hide();
-    $('.share').hide(); $('.play').show();
+
 }
 Game.prototype.getCards = function(){
     socket.getCards();
@@ -54,9 +53,13 @@ Game.prototype.checkIfWinner = function (tick){
     console.log(tick);
     console.log(this.tick);
     if (this.tick === tick){
-        console.log("winner");
-
+        $('.result').children('.result-heading').text("Winner");
+    } else {
+        $('.result').children('.result-heading').text("Loser");
     }
+
+    $('.result').show();
+
 };
 /**
 * Get the image based on the name from the JSON result
@@ -81,5 +84,8 @@ function getImage(name, cards){
         $.each(result, function (){
             $(that).find('.cards-card-image').attr('src', this.url);
         });
+
+        $('.loading').hide();
+        $('.share').hide(); $('.play').show();
     });
 }

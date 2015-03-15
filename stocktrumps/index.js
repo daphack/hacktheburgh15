@@ -164,20 +164,19 @@ wsServer.on('request', function(request) {
                                 }
                             }
 
-                            if(winner) {
-                                var winningObj = {
-                                    function: 'selectwinner',
-                                    wintick: winner
-                                };
+                            var winningObj = {
+                                function: 'selectwinner',
+                                wintick: winner
+                            };
 
-                                var connections = games[data.game].connections;
-                                var len = connections.length;
+                            var connections = games[data.game].connections;
+                            var len = connections.length;
 
-                                for(var x = 0; x < len; x++) {
-                                    var conn = connections[x];
-                                    conn.send(JSON.stringify(winningObj));
-                                }    
-                            }
+                            for(var x = 0; x < len; x++) {
+                                var conn = connections[x];
+                                conn.send(JSON.stringify(winningObj));
+                            }    
+
                         }
                     }
 
