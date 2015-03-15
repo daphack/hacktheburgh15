@@ -74,7 +74,7 @@ wsServer.on('request', function(request) {
                         }
                     } else if(data.function === "answer") {
 
-
+                        console.log(data);
                         if(data.game in games) {
 
                             games[data.game].answer[data.tick] = data.answer;
