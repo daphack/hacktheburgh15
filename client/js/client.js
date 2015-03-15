@@ -15,10 +15,15 @@ function Socket (url, port){
                 'function' : 'createplayer',
                 'game' : gameQuery
             };
+
         }
 
         this.send(JSON.stringify(init));
+
         game = new Game();
+        if (!isHost){
+            game.id = gameQuery;
+        }
     };
     // closes the connection
     this.connection.onclose = function(){
@@ -47,6 +52,8 @@ function Socket (url, port){
                 } else if (data.function === "selectmetric"){
                     //when go is clicked
                     game.setMetric(data.metric);
+                    $('.page').hide();
+                    $('.play').show();
                 } else if (data.function === 'selectwinner'){
                     var winnerTick = data.wintick;
                     game.checkIfWinner(winnerTick);
@@ -80,6 +87,7 @@ Socket.prototype.submitAnswer = function(tick, cap){
         'tick' : tick,
         'game' : game.id
     };
+    console.dir(answer);
     this.connection.send(JSON.stringify(answer));
 }
 //create player
