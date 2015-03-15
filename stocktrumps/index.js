@@ -75,7 +75,7 @@ wsServer.on('request', function(request) {
 
 
                         if(data.game in games) {
-                            if(!games[data.game].answer) {
+                            if(!('answer' in games[data.game])) {
                                 games[data.game].answer = {};
                             }
 
