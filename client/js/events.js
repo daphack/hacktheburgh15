@@ -3,7 +3,7 @@ var socket
 function chooseCard() {
     var $card = $('.cards-card.selected');
     var tick = $card.data('tick');
-    var metric = game.metric;
+    var metric = game.metric; 
     var score = $card.find('.cards-card-data .cards-card-data-group #' + metric).text();
     game.setTick(tick);
     console.log(metric);

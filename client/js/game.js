@@ -35,6 +35,9 @@ Game.prototype.start = function(id){
     $('.share .share-url').attr("value", value + "?g=" + this.id);
 };
 Game.prototype.updatePlayers = function(count){
+    if (parseInt(count) >= 2){
+        $('.share-button-go').prop('disabled', false);
+    }
     $('.share .share-count').text(count);
 };
 Game.prototype.setMetric = function (metric){

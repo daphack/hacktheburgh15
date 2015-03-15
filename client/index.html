@@ -21,7 +21,7 @@
             <span><span class="share-count">1</span> out of 8 players found</span>
             <h2 class="page-heading share-heading">Share This Url...</h2>
             <input class="share-url" type="text" id="share-url" readonly value="http://pythonanywhere.com/daphack/" />
-            <button class="button share-button-go" onclick="$('.loading').show()"><span>Go!</span></button>
+            <button class="button share-button-go" disabled onclick="$('.loading').show()"><span>Go!</span></button>
         </section>
 
         <section class="page play">
@@ -146,6 +146,10 @@
             <h2 class="page-heading loading-heading">Waiting For Everyone</h2>
             <img src="./images/loading.gif" height="55px" width="54px"/>
         </section>
+
+        <section class="page result">
+            <h2 class="page-heading result-heading"></h2>
+        </section>
         <script type="text/javascript">
         var game;
         var isHost = true;
@@ -161,6 +165,7 @@
                     createWebsocket();
                     $('.page.home').hide();
                     $('.share').show();
+                    $('.share-button-go').hide();
                 }
 
             });
