@@ -51,25 +51,82 @@ wsServer.on('request', function(request) {
 
                     } else if(data.function === "createplayer") {
                         if(data.game in games) {
-                            games[data.game].connections.push(connection);
+                            var currentLen = games[data.game].connections.length;
 
-                            var len = games[data.game].connections.length;
+                            if(currentLen < 8) {
+                                games[data.game].connections.push(connection);
 
-                            var countObj = {
-                                function: 'createplayer',
-                                count: len
-                            }
+                                var len = games[data.game].connections.length;
 
-                            console.log(len);
+                                var countObj = {
+                                    function: 'createplayer',
+                                    count: len
+                                }
 
-                            var connections = games[data.game].connections;
-                            for(var x = 0; x < len; x++) {
-                                var conn = connections[x];
-                                conn.send(JSON.stringify(countObj));
+                                var connections = games[data.game].connections;
+
+                                for(var x = 0; x < len; x++) {
+                                    var conn = connections[x];
+                                    conn.send(JSON.stringify(countObj));
+                                }
                             }
                         }
-                    }
+                    } else if(data.function === "answer") {
 
+
+                        if(data.game in games) {
+                            if(!games[data.game].answer) {
+                                games[data.game].answer = {};
+                            }
+
+                            games[data.game].answer[data.tick] = data.answer;
+
+                            var answers = games[data.game].answer;
+                            if(Object.keys(answers).length === games[data.game].connections.length) {
+                                var winner = "";
+                                var max = 0;
+                                for(var key in answers) {
+                                    if(answers[key] > max) {
+                                        winner = key;
+                                        max = answers[key];
+                                    }
+                                }
+
+                                if(winner) {
+                                    var winningObj = {
+                                        function: 'selectwinner',
+                                        wintick: winner
+                                    };
+
+                                    var connections = games[data.game].connections;
+                                    var len = connections.length;
+
+                                    for(var x; x < len; x++) {
+                                        var conn = connections[x];
+                                        conn.send(JSON.stringify(winningObj));
+                                    }
+
+                                }
+                            }
+                        }
+                    } else if(data.function === "selectmetric") {
+                        var num = Math.floor(Math.random() * 3) + 1;
+
+                        var metrics = ["cap", "change", "price"];
+
+                        var metricObj = {
+                            function: 'selectmetric',
+                            metric: metrics[num]
+                        };
+
+                        var connections = games[data.game].connections;
+                        var len = connections.length;
+
+                        for(var x; x < len; x++) {
+                            var conn = connections[x];
+                            conn.send(JSON.stringify(metricObj));
+                        }
+                    }
                     //TODO: answer, createplayer
                     //TODO: handle sessions
                 }
