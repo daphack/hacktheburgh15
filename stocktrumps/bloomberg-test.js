@@ -112,7 +112,7 @@ function getTickData(callback) {
     var data = getData(getFiveRandomTickers(tickers));
 
     req.write(JSON.stringify(data));
-    callback(req.end());
+    req.end();
     req.on("error", function(e) {
         console.error(e);
     });
