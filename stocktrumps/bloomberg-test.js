@@ -104,7 +104,7 @@ function getTickData(callback) {
                 }
 
                 console.log(JSON.stringify(ticks, null, "    "));
-                return ticks;
+                callback(ticks);
             }
         );
     });
