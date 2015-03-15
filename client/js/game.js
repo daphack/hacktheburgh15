@@ -1,6 +1,6 @@
 function Game(){
+    this.id = "";
     this.getCards();
-
 }
 /**
 * Called when the onmessage function is called in the websockets object
@@ -24,7 +24,13 @@ Game.prototype.showCards = function(data){
 Game.prototype.getCards = function(){
     socket.getCards();
 };
-/**
+
+Game.prototype.start = function(id){
+    this.id = id;
+    var value = $('.share .share-url').val();
+    $('.share .share-url').attr("value", value + "?g=" + this.id);
+};
+/**is
 * Get the image based on the name from the JSON result
 * Uses jQuery to Change the src attribute to the image.
 * @param name is the name of the card
