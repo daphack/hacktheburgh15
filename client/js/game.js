@@ -81,7 +81,7 @@ Game.prototype.setTick = function (tick){
 Game.prototype.checkIfWinner = function (tick){
     console.log(tick);
     console.log(this.tick);
-    if (this.tick === tick){
+    if (this.tick && this.tick === tick){
         $('.result').children('.result-heading').text("Winner");
     } else {
         $('.result').children('.result-heading').text("Loser");
