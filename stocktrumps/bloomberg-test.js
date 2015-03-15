@@ -4,8 +4,18 @@ var https = require("https"),
 // http://www.google.com/finance/info?infotype=infoquoteall&q=
 
 // read in tickers
-var tickers = fs.readFileSync("./symbols/symbols.txt",
-                              {"encoding":"utf8"}).split("\n");
+var tickers = ["ATVI", "ADBE", "AKAM", "ALXN", "ALTR", "AMZN", "AAL", "AMGN",
+    "ADI", "AAPL", "AMAT", "ADSK", "ADP", "AVGO", "BIDU", "BBBY", "BIIB",
+    "BRCM", "CHRW", "CA", "CTRX", "CELG", "CERN", "CHTR", "CHKP", "CSCO",
+    "CTXS", "CTSH", "CMCSA", "CMCSK", "COST", "DTV", "DISCA", "DISCK", "DISH",
+    "DLTR", "EBAY", "EA", "EQIX", "EXPD", "ESRX", "FB", "FAST", "FISV", "GRMN",
+    "GILD", "GOOG", "GOOGL", "HSIC", "ILMN", "INTC", "INTU", "ISRG", "GMCR",
+    "KLAC", "KRFT", "LRCX", "LBTYA", "LBTYK", "LVNTA", "QVCA", "LMCA", "LMCK",
+    "LLTC", "MAR", "MAT", "MU", "MSFT", "MDLZ", "MNST", "MYL", "NTAP", "NFLX",
+    "NVDA", "NXPI", "ORLY", "PCAR", "PAYX", "QCOM", "REGN", "ROST", "SNDK",
+    "SBAC", "STX", "SIAL", "SIRI", "SPLS", "SBUX", "SRCL", "SYMC", "TSLA",
+    "TXN", "PCLN", "TSCO", "TRIP", "FOX", "FOXA", "VRSK", "VRTX", "VIAB",
+    "VIP", "VOD", "WDC", "WFM", "WYNN", "XLNX", "YHOO"]
 
 // get start and end dates from a difference in days
 function getDates(difference) {
