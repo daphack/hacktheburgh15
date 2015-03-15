@@ -4,7 +4,7 @@ var bb = require('./bloomberg-test.js'); //Bloomberg api
 
 var games = {};
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8081;
 var server = http.createServer(function(request, response) {
     response.writeHead(404);
     response.end();
