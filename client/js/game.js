@@ -14,8 +14,7 @@ Game.prototype.showCards = function(data){
     //loops through the cards and ouputs the information to the screen
     //parses the json object passed in.
     $('.cards-card').each(function(i) {
-        $(this).find(".cards-card-title .name").text(data[i].name);
-        $(this).find(".cards-card-title .tick").text(data[i].tick);
+        $(this).find(".cards-card-title .name").text(data[i].tick);
         $(this).data("tick", data[i].tick);
         getImage(data[i].name, this);
         $(this).find(".cards-card-data-group #cap").text(data[i].cap);
