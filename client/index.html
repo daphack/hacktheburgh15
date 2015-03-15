@@ -174,14 +174,7 @@
 
             });
 
-            $('.cards-card').click(function() {
-
-                $('.cards-card.selected').removeClass('selected');
-                $(this).addClass('selected');
-
-                $('.play-button-choose').show();
-
-            });
+            $('.cards-card').click(clickCard);
 
             $('.play-button-choose').click(function() {
                 $('.cards-card').each(function() {
@@ -197,7 +190,20 @@
             $('.home-button-play').click(createWebsocket);
 
             //$('.share-button-go').click(getMetric);
-            $('.restart-game').click(restartHandler);
+            $('.restart-game').click(function() {
+                $('.page').hide();
+                $('.share').show();
+
+                clearInterval(timer);
+                $('.page .time').text("30");
+
+                $('.cards-card').each(function() {
+                    $(this).removeClass('selected');
+                    $(this).css('opacity','1');
+                    $(this).click(clickCard);
+                });
+
+            });
 
 
         </script>

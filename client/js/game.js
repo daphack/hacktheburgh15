@@ -17,6 +17,10 @@ Game.prototype.showCards = function(data){
     //loops through the cards and ouputs the information to the screen
     //parses the json object passed in.
 
+    console.log(data);
+
+    loadedImages = 0;
+
     $('.cards-card').each(function(i) {
         $(this).find(".cards-card-title .name").text(data[i].tick);
         $(this).data("tick", data[i].tick);
@@ -129,7 +133,7 @@ function getImage(name, cards){
             $('.loading').hide();
             $('.share').hide(); $('.play').show();
             initTimer();
-            
+
         }
     });
 }

@@ -1,4 +1,5 @@
-var socket
+var socket;
+var timer;
 /** Game events */
 function chooseCard() {
     var $card = $('.cards-card.selected');
@@ -28,10 +29,10 @@ function getMetric(){
 function initTimer(){
     var time = 30;
 
-    var id = setInterval(function(){
+    timer = setInterval(function(){
         time--;
         if (time == 0){
-            clearInterval(id);
+            clearInterval(timer);
             if (isHost){
                 game.end();
             }
@@ -43,4 +44,11 @@ function initTimer(){
 // restart the game
 function restartHandler (){
     window.location.href="index.html";
+}
+
+function clickCard() {
+    $('.cards-card.selected').removeClass('selected');
+    $(this).addClass('selected');
+
+    $('.play-button-choose').show();
 }
