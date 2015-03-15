@@ -15,7 +15,7 @@ function chooseCard() {
 
 //TODO: Open websocket
 function createWebsocket(){
-    socket = new Socket("localhost:8080");
+    socket = new Socket("daphack.assemblyco.de:80");
     //socket.getCards();
 }
 
