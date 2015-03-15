@@ -32,8 +32,7 @@ wsServer.on('request', function(request) {
                     if(data.function === "getcards") {
                         if(data.game in games) {
                             var cardObj = {
-                                function : 'getcards',
-                                cards: bb.getcards()
+                                function : 'getcards'
                             };
 
                             var connections = game[data.game].connections;
