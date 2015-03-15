@@ -5,8 +5,6 @@ function Game(){
     this.id = "";
     this.metric = "";
     this.tick = "";
-
-
 }
 /**
 * Called when the onmessage function is called in the websockets object
@@ -69,7 +67,6 @@ Game.prototype.setMetric = function (metric){
     this.metric = metric;
     console.log("metric" + metric);
     $('.play .metric-phrase .metric').text(metric);
-
 };
 /**
 * Sets the tickets shortcode tick

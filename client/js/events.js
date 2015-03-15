@@ -42,7 +42,7 @@ function initTimer(){
 }
 
 // restart the game
-function restartHandler (){
+function restartHandler () {
     window.location.href="index.html";
 }
 

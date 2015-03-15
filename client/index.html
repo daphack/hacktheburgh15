@@ -26,7 +26,8 @@
 
         <section class="page play">
             <h2 class="page-heading play-heading metric-phrase">Select Highest Market <span class="metric">Capitalisation</span></h2>
-            <p class="timer"> Total time remaining : <span class="time"></span> seconds</p>
+            <p class="timer">Total time remaining: <span class="time"></span> seconds</p>
+            <p class="timer round"></p>
             <div class="cards">
                 <div class="cards-card" data-tick="">
                     <div class="cards-card-title">
@@ -157,6 +158,7 @@
         var isHost = true;
         var gameQuery;
         var loadedImages = 0;
+        var round = 1;
 
             $(document).ready(function() {
                 $('.page').hide();
@@ -204,10 +206,11 @@
                 });
 
                 socket.clearAnswers();
-
+                round += 1;
+                $('.round').text("Round: " + round.toString());
             });
 
-
+            $('.round').text("Round: " + round.toString());
         </script>
     </body>
 </html>
