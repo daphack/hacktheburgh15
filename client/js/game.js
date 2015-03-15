@@ -37,6 +37,7 @@ Game.prototype.start = function(id){
 Game.prototype.updatePlayers = function(count){
     if (parseInt(count) >= 2){
         $('.share-button-go').prop('disabled', false);
+        $('.share-button-go').click(getMetric);
     }
     $('.share .share-count').text(count);
 };
