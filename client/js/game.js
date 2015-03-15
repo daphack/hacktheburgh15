@@ -1,3 +1,6 @@
+/*
+* Game Constructor, sets a few basic settings about the game here
+*/
 function Game(){
     this.id = "";
     this.metric = "";
@@ -22,17 +25,34 @@ Game.prototype.showCards = function(data){
         $(this).find(".cards-card-data-group #change").text(data[i].change);
 
     });
+<<<<<<< HEAD
 
+=======
+    $('.loading').hide();
+    $('.share').hide(); $('.play').show();
+    initTimer();
+>>>>>>> 185d0c548b7432636ac5b62b9a899d5043c94e18
 }
+/**
+* Gets all the cards for the hand, maximum of 5
+*/
 Game.prototype.getCards = function(){
     socket.getCards();
 };
-
+/**
+* Starts the game
+* Sets the URL value to be the game ID
+* @param the game ID.
+*/
 Game.prototype.start = function(id){
     this.id = id;
     var value = $('.share .share-url').val();
     $('.share .share-url').attr("value", value + "?g=" + this.id);
 };
+/**
+* Request from the server which will update the players total on the second screen
+* @param the count of the players
+*/
 Game.prototype.updatePlayers = function(count){
     if (parseInt(count) >= 2){
         $('.share-button-go').prop('disabled', false);
@@ -40,15 +60,28 @@ Game.prototype.updatePlayers = function(count){
     }
     $('.share .share-count').text(count);
 };
+/**
+* Set which option we're going for as the highest value
+* @param is the metric string representation of this.
+*/
 Game.prototype.setMetric = function (metric){
     this.metric = metric;
     console.log("metric" + metric);
     $('.play .metric-phrase .metric').text(metric);
 
 };
+/**
+* Sets the tickets shortcode tick
+* @param is the tick shortcode
+*/
 Game.prototype.setTick = function (tick){
     this.tick = tick;
 };
+/**
+* Checks the response from the web server to see if the matching tick is the same
+* as the users, if so they win.
+* @param the tick returned from the server, which was the winner.
+*/
 Game.prototype.checkIfWinner = function (tick){
     console.log(tick);
     console.log(this.tick);
@@ -60,6 +93,12 @@ Game.prototype.checkIfWinner = function (tick){
 
     $('.result').show();
 
+};
+/**
+* Called when the timer has ran out
+*/
+Game.prototype.end = function(){
+    socket.end();
 };
 /**
 * Get the image based on the name from the JSON result
