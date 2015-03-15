@@ -98,6 +98,7 @@ wsServer.on('request', function(request) {
                                         wintick: winner
                                     };
 
+                                    console.log(data);
                                     var connections = games[data.game].connections;
                                     var len = connections.length;
 
@@ -110,26 +111,29 @@ wsServer.on('request', function(request) {
                             }
                         }
                     } else if(data.function === "selectmetric") {
-                        var num = Math.floor(Math.random() * 3);
-                        console.log(num);
-                        var metrics = ["cap", "change", "price"];
+                        if('game' in data) {
+                            if(games[data.game].connections.length >= 2) {
+                                var num = Math.floor(Math.random() * 3);
+                                console.log(num);
+                                var metrics = ["cap", "change", "price"];
 
-                        var metricObj = {
-                            function: 'selectmetric',
-                            metric: metrics[num]
-                        };
-                        console.log(metricObj);
-                        var connections = games[data.game].connections;
-                        var len = connections.length;
-                        for(var x =0; x < len; x++) {
-                            var conn = connections[x];
-                            conn.send(JSON.stringify(metricObj));
+                                var metricObj = {
+                                    function: 'selectmetric',
+                                    metric: metrics[num]
+                                };
+                                console.log(metricObj);
+                                var connections = games[data.game].connections;
+                                var len = connections.length;
+                                for(var x =0; x < len; x++) {
+                                    var conn = connections[x];
+                                    conn.send(JSON.stringify(metricObj));
+                                }
+
+                                games[data.game].isPlaying = true;
+                            }
                         }
-
-                        games[data.game].isPlaying = true;
                     }
-                    //TODO: answer, createplayer
-                    //TODO: handle sessions
+
                 }
             } catch(e) {
                 console.log(e);
