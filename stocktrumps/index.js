@@ -38,9 +38,9 @@ wsServer.on('request', function(request) {
                             var connections = games[data.game].connections;
                             var len = connections.length;
                             for(var x = 0; x < len; x++) {
-                                var conn = connections[x];
 
-                                bb.getTickData(function(result) {
+                                bb.getTickData(function(result, conn) {
+                                    var conn = connections[x];
                                     var cardObj = {
                                         function: 'getcards',
                                         cards: result
