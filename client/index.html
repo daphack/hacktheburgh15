@@ -205,6 +205,8 @@
                     $(this).click(clickCard);
                 });
 
+                $('.play-button-choose').hide();
+
                 socket.clearAnswers();
                 round += 1;
                 $('.round').text("Round: " + round.toString());
