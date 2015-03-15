@@ -3,7 +3,7 @@ var socket
 function chooseCard() {
     var $card = $('.cards-card.selected');
     var tick = $card.data('tick');
-    var metric = game.metric; 
+    var metric = game.metric;
     var score = $card.find('.cards-card-data .cards-card-data-group #' + metric).text();
     game.setTick(tick);
     console.log(metric);
@@ -24,6 +24,19 @@ function createWebsocket(){
 */
 function getMetric(){
     socket.selectMetric();
+}
+
+function initTimer(){
+    var time = 60;
+
+    var id = setInterval(function(){
+        time--;
+        if (time == 0 && isHost){
+            game.end();
+            clearInterval(id);
+        }
+        $('.page .time').text(time);
+    },1000);
 }
 
 

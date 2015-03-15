@@ -108,5 +108,14 @@ Socket.prototype.selectMetric = function(){
     };
     this.connection.send(JSON.stringify(metric));
     game.getCards();
-
 }
+/**
+* Ends the game by sending a request to the server
+*/
+Socket.prototype.end = function(){
+    var end = {
+        'function' : 'end',
+        'game' : game.id
+    };
+    this.connection.send(JSON.stringify(end));
+};
