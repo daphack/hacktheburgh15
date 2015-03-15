@@ -35,6 +35,7 @@ function Socket (url, port){
                     game.showCards(data.cards);
                 } else if (data.function === 'createplayer'){
                     //send update to every player in the team to let them know how many have joined
+                    game.updatePlayers(data.count);
                 }
             }
             console.log(data);

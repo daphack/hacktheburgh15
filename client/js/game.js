@@ -30,6 +30,9 @@ Game.prototype.start = function(id){
     var value = $('.share .share-url').val();
     $('.share .share-url').attr("value", value + "?g=" + this.id);
 };
+Game.prototype.updatePlayers = function(count){
+    $('.share .share-count').text(count);
+};
 /**is
 * Get the image based on the name from the JSON result
 * Uses jQuery to Change the src attribute to the image.
