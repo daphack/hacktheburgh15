@@ -53,7 +53,7 @@ wsServer.on('request', function(request) {
                         if(data.game in games) {
                             var currentLen = games[data.game].connections.length;
 
-                            if(currentLen < 8) {
+                            if(currentLen < 8 && !('isPlaying' in games[data.game])) {
                                 games[data.game].connections.push(connection);
 
                                 var len = games[data.game].connections.length;
@@ -101,7 +101,7 @@ wsServer.on('request', function(request) {
                                     var connections = games[data.game].connections;
                                     var len = connections.length;
 
-                                    for(var x; x < len; x++) {
+                                    for(var x = 0; x < len; x++) {
                                         var conn = connections[x];
                                         conn.send(JSON.stringify(winningObj));
                                     }
@@ -125,6 +125,8 @@ wsServer.on('request', function(request) {
                             var conn = connections[x];
                             conn.send(JSON.stringify(metricObj));
                         }
+
+                        games[data.game].isPlaying = true;
                     }
                     //TODO: answer, createplayer
                     //TODO: handle sessions
