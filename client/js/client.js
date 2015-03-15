@@ -5,9 +5,18 @@ function Socket (url, port){
     //on open on the connection
     this.connection.onopen = function(){
         //key value pair [funtion name ] => Arguments
-        var init = {
-            'function' : 'startgame',
-        };
+        var init;
+        if (isHost){
+            init = {
+                'function' : 'startgame',
+            };
+        } else {
+            init = {
+                'function' : 'createplayer',
+                'game' : gameQuery
+            };
+        }
+
         this.send(JSON.stringify(init));
         game = new Game();
     };
@@ -33,11 +42,14 @@ function Socket (url, port){
                     game.showCards(data.cards);
                 } else if (data.function === 'createplayer'){
                     //send update to every player in the team to let them know how many have joined
+
                     game.updatePlayers(data.count);
                 } else if (data.function === "selectmetric"){
                     //when go is clicked
-                    console.log("metric" + data.metric);
                     game.setMetric(data.metric);
+                } else if (data.function === 'selectwinner'){
+                    var winnerTick = data.wintick;
+                    game.checkIfWinner(winnerTick);
                 }
             }
         } catch (e){
@@ -64,8 +76,8 @@ Socket.prototype.getCards = function(){
 Socket.prototype.submitAnswer = function(tick, cap){
     var answer = {
         'function' : 'answer',
-        'score' : cap,
-        'answer' : tick,
+        'answer' : cap,
+        'tick' : tick,
         'game' : game.id
     };
     this.connection.send(JSON.stringify(answer));

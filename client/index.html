@@ -149,10 +149,20 @@
         </section>
         <script type="text/javascript">
         var game;
+        var isHost = true;
+        var gameQuery;
             $(document).ready(function() {
                 $('.page').hide();
                 $('.page.home').show();
-
+                //check for GET Params and multiple games
+                gameQuery = window.location.search.replace("?g=", "");
+                console.log(gameQuery);
+                if (gameQuery){
+                    isHost = false;
+                    createWebsocket();
+                    $('.page.home').hide();
+                    $('.share').show();
+                }
 
             });
 
