@@ -36,8 +36,8 @@ Game.prototype.updatePlayers = function(count){
 };
 Game.prototype.setMetric = function (metric){
     this.metric = metric;
-    console.log(metric);
-    $('.share .metric').text(metric);
+    console.log("metric" + metric);
+    $('.play .metric-phrase .metric').text(metric);
 };
 /**
 * Get the image based on the name from the JSON result
