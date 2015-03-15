@@ -119,7 +119,7 @@ wsServer.on('request', function(request) {
                             }
                         }
                     } else if(data.function === "selectmetric") {
-                        if('game' in data) {
+                        if('game' in data && data.game in games) {
                             if(games[data.game].connections.length >= 2) {
                                 var num = Math.floor(Math.random() * 3);
                                 console.log(num);
