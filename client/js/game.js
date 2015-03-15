@@ -25,13 +25,9 @@ Game.prototype.showCards = function(data){
         $(this).find(".cards-card-data-group #change").text(data[i].change);
 
     });
-<<<<<<< HEAD
-
-=======
     $('.loading').hide();
     $('.share').hide(); $('.play').show();
     initTimer();
->>>>>>> 185d0c548b7432636ac5b62b9a899d5043c94e18
 }
 /**
 * Gets all the cards for the hand, maximum of 5
