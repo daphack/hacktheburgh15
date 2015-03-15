@@ -41,6 +41,11 @@ function initTimer(){
     },1000);
 }
 
+// restart the game
+function restartHandler (){
+    window.location.href="index.html";
+}
+
 
 
 //TODO: Create session/connect to existing session
