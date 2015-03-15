@@ -36,6 +36,9 @@ function Socket (url, port){
                 } else if (data.function === 'createplayer'){
                     //send update to every player in the team to let them know how many have joined
                     game.updatePlayers(data.count);
+                } else if (data.function == "selectmetric"){
+                    //when go is clicked
+                    game.setMetric(data.metric);
                 }
             }
             console.log(data);

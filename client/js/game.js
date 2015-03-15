@@ -1,6 +1,7 @@
 function Game(){
     this.id = "";
     this.getCards();
+    this.metric = "";
 }
 /**
 * Called when the onmessage function is called in the websockets object
@@ -32,6 +33,9 @@ Game.prototype.start = function(id){
 };
 Game.prototype.updatePlayers = function(count){
     $('.share .share-count').text(count);
+};
+Game.prototype.setMetric = function (metric){
+    this.metric = metric;
 };
 /**is
 * Get the image based on the name from the JSON result
