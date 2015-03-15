@@ -40,7 +40,7 @@ wsServer.on('request', function(request) {
                             for(var x = 0; x < len; x++) {
                                 var conn = connections[x];
 
-                                function(conn) {
+                                (function(conn) {
                                     bb.getTickData(function(result) {
                                         var cardObj = {
                                             function: 'getcards',
@@ -49,7 +49,7 @@ wsServer.on('request', function(request) {
 
                                         conn.send(JSON.stringify(cardObj));
                                     });
-                                }(conn);
+                                }(conn));
 
                             }
 
