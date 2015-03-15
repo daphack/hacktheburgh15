@@ -15,14 +15,13 @@ function Socket (url, port){
                 'function' : 'createplayer',
                 'game' : gameQuery
             };
-
         }
 
         this.send(JSON.stringify(init));
 
         game = new Game();
         if (!isHost){
-            game.id = gameQuery;
+            game.start(gameQuery);
         }
     };
     // closes the connection

@@ -13,7 +13,6 @@ function chooseCard() {
 }
 
 
-//TODO: Open websocket
 function createWebsocket(){
     socket = new Socket("daphack.assemblyco.de:80");
     //socket.getCards();
@@ -45,9 +44,3 @@ function initTimer(){
 function restartHandler (){
     window.location.href="index.html";
 }
-
-
-
-//TODO: Create session/connect to existing session
-//TODO: Accept new users to session
-//TODO: Run game
