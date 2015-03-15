@@ -83,7 +83,7 @@ wsServer.on('request', function(request) {
 
                             var answers = games[data.game].answer;
 
-                            console.log(Object.keys(answers).length);
+                            console.log(answers);
                             if(Object.keys(answers).length === games[data.game].connections.length) {
                                 var winner = "";
                                 var max = 0;
