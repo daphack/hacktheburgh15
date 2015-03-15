@@ -16,9 +16,11 @@ function Game(){
 Game.prototype.showCards = function(data){
     //loops through the cards and ouputs the information to the screen
     //parses the json object passed in.
+
     $('.cards-card').each(function(i) {
         $(this).find(".cards-card-title .name").text(data[i].tick);
         $(this).data("tick", data[i].tick);
+
         getImage(data[i].tick, this);
         $(this).find(".cards-card-data-group #cap").text(data[i].cap);
         $(this).find(".cards-card-data-group #price").text(data[i].price);
@@ -120,7 +122,11 @@ function getImage(name, cards){
             $(that).find('.cards-card-image').attr('src', this.url);
         });
 
-        $('.loading').hide();
-        $('.share').hide(); $('.play').show();
+        loadedImages++;
+
+        if(loadedImages == 5) {
+            $('.loading').hide();
+            $('.share').hide(); $('.play').show();
+        }
     });
 }
