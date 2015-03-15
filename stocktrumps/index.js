@@ -47,6 +47,7 @@ wsServer.on('request', function(request) {
 
                         games[url] = {};
                         games[url].connections = [connection];
+                        games[url].answer = {};
                         connection.send(JSON.stringify(game));
 
                     } else if(data.function === "createplayer") {
@@ -75,9 +76,6 @@ wsServer.on('request', function(request) {
 
 
                         if(data.game in games) {
-                            if(!('answer' in games[data.game])) {
-                                games[data.game].answer = {};
-                            }
 
                             games[data.game].answer[data.tick] = data.answer;
 
