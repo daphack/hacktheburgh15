@@ -40,14 +40,16 @@ wsServer.on('request', function(request) {
                             for(var x = 0; x < len; x++) {
                                 var conn = connections[x];
 
-                                bb.getTickData(function(result) {
-                                    var cardObj = {
-                                        function: 'getcards',
-                                        cards: result
-                                    };
+                                (function(conn) {
+                                    bb.getTickData(function(result) {
+                                        var cardObj = {
+                                            function: 'getcards',
+                                            cards: result
+                                        };
 
-                                    conn.send(JSON.stringify(cardObj));
-                                });
+                                        conn.send(JSON.stringify(cardObj));
+                                    });
+                                }(conn));
 
                             }
 
