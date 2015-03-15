@@ -222,7 +222,6 @@ html, body {
     width:73px;
     background-color:#e8e8e8;
     padding:10px;
-    position:absolute;
-    margin-left:36px;
+    margin-left:220px;
     cursor:pointer;
 }
