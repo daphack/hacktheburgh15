@@ -110,8 +110,8 @@ wsServer.on('request', function(request) {
                             }
                         }
                     } else if(data.function === "selectmetric") {
-                        var num = Math.floor(Math.random() * 3) + 1;
-
+                        var num = Math.floor(Math.random() * 3);
+                        console.log(num);
                         var metrics = ["cap", "change", "price"];
 
                         var metricObj = {
