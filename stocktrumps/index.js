@@ -118,11 +118,10 @@ wsServer.on('request', function(request) {
                             function: 'selectmetric',
                             metric: metrics[num]
                         };
-
+                        console.log(metricObj);
                         var connections = games[data.game].connections;
                         var len = connections.length;
-
-                        for(var x; x < len; x++) {
+                        for(var x =0; x < len; x++) {
                             var conn = connections[x];
                             conn.send(JSON.stringify(metricObj));
                         }

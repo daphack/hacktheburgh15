@@ -26,6 +26,7 @@
 
         <section class="page play">
             <h2 class="page-heading play-heading">Highest Market Capitalisation</h2>
+            <p class="metric-phrase">You will be playing and competing against <span class="metric"></span></p>
             <div class="cards">
                 <div class="cards-card" data-tick="">
                     <div class="cards-card-title">
@@ -165,6 +166,8 @@
             $('.play-button-choose').click(chooseCard);
 
             $('.home-button-play').click(createWebsocket);
+
+            $('.share-button-go').click(getMetric);
 
 
         </script>
