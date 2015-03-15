@@ -16,7 +16,7 @@ Game.prototype.showCards = function(data){
     $('.cards-card').each(function(i) {
         $(this).find(".cards-card-title .name").text(data[i].tick);
         $(this).data("tick", data[i].tick);
-        getImage(data[i].name, this);
+        getImage(data[i].tick, this);
         $(this).find(".cards-card-data-group #cap").text(data[i].cap);
         $(this).find(".cards-card-data-group #price").text(data[i].price);
         $(this).find(".cards-card-data-group #change").text(data[i].change);
