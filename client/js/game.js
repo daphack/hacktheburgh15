@@ -27,13 +27,13 @@ Game.prototype.showCards = function(data){
     });
     $('.loading').hide();
     $('.share').hide(); $('.play').show();
+    initTimer();
 }
 /**
 * Gets all the cards for the hand, maximum of 5
 */
 Game.prototype.getCards = function(){
     socket.getCards();
-    initTimer();
 };
 /**
 * Starts the game
