@@ -1,6 +1,6 @@
 var WebSocketServer = require('websocket').server;
 var http = require('http');
-var bb = require('./bloomberg.js'); //Bloomberg api
+var bb = require('./bloomberg-test.js'); //Bloomberg api
 
 var games = {};
 
@@ -30,13 +30,22 @@ wsServer.on('request', function(request) {
 
                 if('function' in data && data.function !== undefined) {
                     if(data.function === "getcards") {
+                        if(data.game in games) {
+                            var cardObj = {
+                                function : 'getcards',
+                                cards: bb.getcards()
+                            };
 
-                        var cardObj = {
-                            function : 'getcards',
-                            cards: bb.getcards()
+                            var connections = game[data.game].connections;
+                            var len = connections.length;
+                            for(var x = 0; x < len; x++) {
+                                var conn = connections[x];
 
-                        };
-                        connection.send(JSON.stringify(cardObj));
+                                cardObj.cards = bb.getTickData();
+                                conn.send(JSON.stringify(cardObj));
+                            }
+
+                        }
                     } else if(data.function === "startgame") {
 
                         var url = Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 8);
