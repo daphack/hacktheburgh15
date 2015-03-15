@@ -2,6 +2,9 @@ function Game(){
     this.id = "";
     this.getCards();
     this.metric = "";
+    this.tick = "";
+
+
 }
 /**
 * Called when the onmessage function is called in the websockets object
@@ -38,6 +41,16 @@ Game.prototype.setMetric = function (metric){
     this.metric = metric;
     console.log("metric" + metric);
     $('.play .metric-phrase .metric').text(metric);
+};
+Game.prototype.setTick = function (tick){
+    this.tick = tick;
+};
+Game.prototype.checkIfWinner = function (tick){
+    console.log(tick);
+    console.log(this.tick);
+    if (this.tick === tick){
+        console.log("winner");
+    }
 };
 /**
 * Get the image based on the name from the JSON result

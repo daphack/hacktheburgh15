@@ -5,6 +5,7 @@ function chooseCard() {
     var tick = $card.data('tick');
     var metric = game.metric;
     var score = $card.find('.cards-card-data .cards-card-data-group #' + metric).text();
+    game.setTick(tick);
     // Send tick via websockets so that it can be compared with the others and the winner returned
     socket.submitAnswer(tick, score);
     //handl
@@ -12,7 +13,7 @@ function chooseCard() {
 
 
 //TODO: Open websocket
-function createWebsocket(){
+function createWebsocket(){ 
     socket = new Socket("localhost:8080");
     //socket.getCards();
 }
