@@ -103,9 +103,9 @@ wsServer.on('request', function(request) {
                                 var winner = "";
                                 var max = 0;
                                 for(var key in answers) {
-                                    if(answers[key] > max) {
+                                    if(parseFloat(answers[key]) > max) {
                                         winner = key;
-                                        max = answers[key];
+                                        max = parseFloat(answers[key]);
                                     }
                                 }
 
