@@ -23,6 +23,8 @@ Game.prototype.showCards = function(data){
         $(this).find(".cards-card-data-group #change").text(data[i].change);
 
     });
+    $('.loading').hide();
+    $('.share').hide(); $('.play').show();
 }
 Game.prototype.getCards = function(){
     socket.getCards();
