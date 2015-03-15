@@ -175,13 +175,24 @@
             });
 
             $('.cards-card').click(function() {
+
                 $('.cards-card.selected').removeClass('selected');
                 $(this).addClass('selected');
 
                 $('.play-button-choose').show();
+
             });
 
-            $('.play-button-choose').click(chooseCard);
+            $('.play-button-choose').click(function() {
+                $('.cards-card').each(function() {
+                    if(!$(this).hasClass('selected')) {
+                        $(this).css('opacity', 0.2);
+                        $(this).unbind('click');
+                    }
+                });
+
+                chooseCard();
+            });
 
             $('.home-button-play').click(createWebsocket);
 
