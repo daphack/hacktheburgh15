@@ -6,7 +6,7 @@ function Socket (url, port){
     this.connection.onopen = function(){
         //key value pair [funtion name ] => Arguments
         var init = {
-            'startgame' : true
+            'function' : 'startgame',
         };
         this.send(JSON.stringify(init));
         game = new Game();
@@ -23,11 +23,18 @@ function Socket (url, port){
         try {
             data = JSON.parse(e.data);
             if ("function" in data){
-                if (data.function == "startgame"){
-                    //parse the foo function
+                console.dir(data);
+                if (data.function === "startgame"){
+                    //parse the start game function
+                    console.log(data.url);
+                    game.start(data.url);
+
+
                 } else if (data.function === "getcards"){
                     //show the cards
                     game.showCards(data.cards);
+                } else if (data.function === 'createplayer'){
+                    //send update to every player in the team to let them know how many have joined
                 }
             }
             console.log(data);
