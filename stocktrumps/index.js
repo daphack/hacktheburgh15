@@ -175,8 +175,12 @@ wsServer.on('request', function(request) {
                             for(var x = 0; x < len; x++) {
                                 var conn = connections[x];
                                 conn.send(JSON.stringify(winningObj));
-                            }    
+                            }
 
+                        }
+                    } else if(data.function === "clearanswers") {
+                        if(data.game in games) {
+                            games[data.game].answer = {};
                         }
                     }
 

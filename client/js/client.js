@@ -118,3 +118,12 @@ Socket.prototype.end = function(){
     };
     this.connection.send(JSON.stringify(end));
 };
+
+Socket.prototype.clearAnswers = function(){
+    var clear = {
+        'function': 'clearanswers',
+        'game': game.id
+    };
+
+    this.connection.send(JSON.stringify(clear));
+};
