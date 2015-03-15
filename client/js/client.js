@@ -75,7 +75,8 @@ function Socket (url, port){
 //get cards
 Socket.prototype.getCards = function(){
     var cards = {
-        'function' : 'getcards'
+        'function' : 'getcards',
+        'game' : game.id
     };
     this.connection.send(JSON.stringify(cards));
 }
@@ -105,4 +106,6 @@ Socket.prototype.selectMetric = function(){
         'game' : game.id
     };
     this.connection.send(JSON.stringify(metric));
+    game.getCards();
+
 }

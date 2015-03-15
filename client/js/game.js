@@ -1,6 +1,5 @@
 function Game(){
     this.id = "";
-    this.getCards();
     this.metric = "";
     this.tick = "";
 
@@ -41,6 +40,7 @@ Game.prototype.setMetric = function (metric){
     this.metric = metric;
     console.log("metric" + metric);
     $('.play .metric-phrase .metric').text(metric);
+
 };
 Game.prototype.setTick = function (tick){
     this.tick = tick;
