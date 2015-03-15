@@ -72,6 +72,8 @@ wsServer.on('request', function(request) {
                             var currentLen = games[data.game].connections.length;
 
                             if(currentLen < 8 && !('isPlaying' in games[data.game])) {
+
+                                games[data.game].numAnswers = 0;
                                 games[data.game].connections.push(connection);
 
                                 var len = games[data.game].connections.length;
@@ -88,6 +90,8 @@ wsServer.on('request', function(request) {
                                     conn.send(JSON.stringify(countObj));
                                 }
                             }
+
+
                         }
                     } else if(data.function === "answer") {
 
@@ -95,11 +99,11 @@ wsServer.on('request', function(request) {
                         if(data.game in games) {
 
                             games[data.game].answer[data.tick] = data.answer;
-
+                            games[data.game].numAnswers++;
                             var answers = games[data.game].answer;
 
                             console.log(answers);
-                            if(Object.keys(answers).length === games[data.game].connections.length) {
+                            if(games[data.game].numAnswers === games[data.game].connections.length) {
                                 var winner = "";
                                 var max = 0;
                                 for(var key in answers) {
@@ -181,6 +185,8 @@ wsServer.on('request', function(request) {
                     } else if(data.function === "clearanswers") {
                         if(data.game in games) {
                             games[data.game].answer = {};
+                            games[data.game].numAnswers = 0;
+
                         }
                     }
 
