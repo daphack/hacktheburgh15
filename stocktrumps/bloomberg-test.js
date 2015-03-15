@@ -1,6 +1,8 @@
 var https = require("https"),
     fs = require("fs");
 
+// http://www.google.com/finance/info?infotype=infoquoteall&q=
+
 // read in tickers
 var tickers = fs.readFileSync("./symbols/symbols.txt",
                               {"encoding":"utf8"}).split("\n");
@@ -49,30 +51,60 @@ function getFiveRandomTickers(tickers) {
     for (var i = 0; i < 5; i += 1) {
         rTicks.push(tickers[Math.floor(Math.random() * tickers.length)]);
     }
-
     return rTicks;
 }
 
+// set up API options and built request
 var options = {
-    hostname: 'http-api.openbloomberg.com',
+    hostname: "http-api.openbloomberg.com",
     port: 443,
-    path: '/request?ns=blp&service=refdata&type=HistoricalDataRequest',
-    method: 'POST',
-    key: fs.readFileSync('certs/client.key'),
-    cert: fs.readFileSync('certs/client.crt'),
-    ca: fs.readFileSync('certs/bloomberg.crt'),
+    path: "/request?ns=blp&service=refdata&type=HistoricalDataRequest",
+    method: "POST",
+    key: fs.readFileSync("certs/client.key"),
+    cert: fs.readFileSync("certs/client.crt"),
+    ca: fs.readFileSync("certs/bloomberg.crt"),
 };
 
-var req = https.request(options, function(res) {
-    res.on('data', function(d) {
-        process.stdout.write(d);
-    });
-});
+function getTickData() {
+    var req = https.request(options, function(res) {
+        var buffer = "";
+        var ticks = [];
 
-var data = getData(getFiveRandomTickers(tickers));
-console.log(data);
-req.write(JSON.stringify(data));
-req.end();
-req.on('error', function(e) {
-    console.error(e);
-});
+        res.on("data",
+            function(chunk) {
+                buffer += chunk.toString();
+            }
+        );
+
+        res.on("end",
+            function() {
+                var d = JSON.parse(buffer);
+                var sd = {};
+
+                for (var i in d["data"]) {
+                    sd = d["data"][i]["securityData"];
+                    ticks.push(
+                        {
+                            "tick": sd["security"].split(" ")[0],
+                            "cap": sd["fieldData"][0]["CUR_MKT_CAP"],
+                            "price": sd["fieldData"][0]["PX_LAST"],
+                            "change": sd["fieldData"][0]["CHG_PCT_5D"]
+                        }
+                    );
+                }
+
+                console.log(JSON.stringify(ticks, null, "    "));
+                return ticks;
+            }
+        );
+    });
+
+    var data = getData(getFiveRandomTickers(tickers));
+    req.write(JSON.stringify(data));
+    req.end();
+    req.on("error", function(e) {
+        console.error(e);
+    });
+}
+
+module.exports.getTickData = getTickData;
