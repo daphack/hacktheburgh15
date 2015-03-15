@@ -53,8 +53,8 @@ function Socket (url, port){
                 } else if (data.function === "selectmetric"){
                     //when go is clicked
                     game.setMetric(data.metric);
-                    $('.page').hide();
-                    $('.play').show();
+                    $('.loading').show();
+                    //$('.play').show();
                 } else if (data.function === 'selectwinner'){
                     var winnerTick = data.wintick;
                     game.checkIfWinner(winnerTick);

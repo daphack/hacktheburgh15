@@ -27,9 +27,8 @@ Game.prototype.showCards = function(data){
         $(this).find(".cards-card-data-group #change").text(data[i].change);
 
     });
-    $('.loading').hide();
-    $('.share').hide(); $('.play').show();
-    initTimer();
+    /*$('.loading').hide();
+    $('.share').hide(); $('.play').show();*/
 }
 /**
 * Gets all the cards for the hand, maximum of 5
@@ -122,11 +121,15 @@ function getImage(name, cards){
             $(that).find('.cards-card-image').attr('src', this.url);
         });
 
+
+
         loadedImages++;
 
         if(loadedImages == 5) {
             $('.loading').hide();
             $('.share').hide(); $('.play').show();
+            initTimer();
+            
         }
     });
 }
